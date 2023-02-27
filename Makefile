@@ -6,7 +6,7 @@
 #    By: marcela <marcela@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/26 20:23:17 by marcela           #+#    #+#              #
-#    Updated: 2023/02/26 21:50:15 by marcela          ###   ########.fr        #
+#    Updated: 2023/02/27 16:21:04 by marcela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror -I./includes
 RM = rm -rf
 NAME = philo
 
-SRCS = src/philo.c
+SRCS = src/philo.c src/utils.c
 
 OBJS = $(SRCS:.c=.o)
 
