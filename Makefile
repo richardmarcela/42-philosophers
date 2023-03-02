@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marcela <marcela@student.42.fr>            +#+  +:+       +#+         #
+#    By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/26 20:23:17 by marcela           #+#    #+#              #
-#    Updated: 2023/02/27 16:21:04 by marcela          ###   ########.fr        #
+#    Updated: 2023/03/02 19:31:37 by mrichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror -I./includes
 RM = rm -rf
 NAME = philo
 
-SRCS = src/philo.c src/utils.c
+SRCS = src/philo.c src/utils.c src/init.c
 
 OBJS = $(SRCS:.c=.o)
 

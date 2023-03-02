@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcela <marcela@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:23:06 by marcela           #+#    #+#             */
-/*   Updated: 2023/02/27 16:25:19 by marcela          ###   ########.fr       */
+/*   Updated: 2023/03/02 20:07:29 by mrichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ static int	error_in_args(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	if (error_in_args(argc, argv))
+	t_table	table;
+	
+	if (error_in_args(argc, argv) || init(&table, argv, argc))
 		return (exit_error());
+	printf("\nNUMBER OF PHILOS: %d\n", table.number_of_philos);
+	printf("TIME TO DIE: %d\n", table.time_to_die);
+	printf("TIME TO EAT: %d\n", table.time_to_eat);
+	printf("TIME TO SLEEP: %d\n", table.time_to_sleep);
+	printf("TIMES TO EAT: %d\n", table.must_eat);
 }
