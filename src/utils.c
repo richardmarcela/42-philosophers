@@ -6,7 +6,7 @@
 /*   By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:18:22 by marcela           #+#    #+#             */
-/*   Updated: 2023/03/02 19:34:05 by mrichard         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:42:48 by mrichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int	exit_error(void)
+int	ft_strcmp(char *s1, char *s2)
 {
-	printf("Error in params! Try again.\n");
-	return (1);
+	while (*s1 && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return (*(char *)s1 - *(char *)s2);
 }
 
 int	ft_atoi(char *str)

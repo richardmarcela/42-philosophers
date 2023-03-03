@@ -6,7 +6,7 @@
 /*   By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 19:31:10 by mrichard          #+#    #+#             */
-/*   Updated: 2023/03/02 19:56:21 by mrichard         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:23:15 by mrichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static int	alloc(t_table *table)
 {
 	table->tid = malloc(sizeof(pthread_t) * table->number_of_philos);
 	if (!table->tid)
-		return (exit_error());
+		return (exit_error(table));
 	table->forks = malloc(sizeof(pthread_mutex_t) * table->number_of_philos);
 	if (!table->forks)
-		return (exit_error());
+		return (exit_error(table));
 	table->philos = malloc(sizeof(t_philo) * table->number_of_philos);
 	if (!table->philos)
-		return (exit_error());
+		return (exit_error(table));
 	return (0);
 }
 
@@ -72,7 +72,7 @@ static int	init_table(t_table *table, char **argv, int argc)
 		table->must_eat = -1;
 	if (table->number_of_philos <= 0 || table->time_to_die < 0
 		|| table->time_to_eat < 0 || table->time_to_sleep < 0)
-		return (exit_error());
+		return (exit_error(table));
 	table->dead = 0;
 	table->finished = 0;
 	pthread_mutex_init(&table->write, NULL);
