@@ -6,7 +6,7 @@
 /*   By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:22:53 by marcela           #+#    #+#             */
-/*   Updated: 2023/03/03 21:06:21 by mrichard         ###   ########.fr       */
+/*   Updated: 2023/03/04 15:32:12 by mrichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ typedef struct s_philo
 	int				times_ate;
 	int				eating;
 	int				status;
+	int				right_fork;
+	int				left_fork;
 	__uint64_t		time_to_die;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	lock;
 	pthread_t		t1;
 	struct s_table	*table;

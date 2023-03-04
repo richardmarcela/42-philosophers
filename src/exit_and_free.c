@@ -6,7 +6,7 @@
 /*   By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:40:02 by mrichard          #+#    #+#             */
-/*   Updated: 2023/03/03 19:40:20 by mrichard         ###   ########.fr       */
+/*   Updated: 2023/03/04 15:17:04 by mrichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 static void	clear_data(t_table *table)
 {
-	if (table->tid)
-		free(table->tid);
-	if (table->forks)
-		free(table->forks);
-	if (table->philos)
-		free(table->philos);
+	free(table->tid);
+	free(table->forks);
+	free(table->philos);
 }
 
 int	exit_error(t_table *table)

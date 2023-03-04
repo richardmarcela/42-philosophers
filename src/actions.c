@@ -6,7 +6,7 @@
 /*   By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:37:33 by mrichard          #+#    #+#             */
-/*   Updated: 2023/03/03 20:53:24 by mrichard         ###   ########.fr       */
+/*   Updated: 2023/03/04 15:41:04 by mrichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,19 @@ void	messages(char *str, t_philo *philo)
 	pthread_mutex_unlock(&philo->table->write);
 }
 
-static void take_forks(t_philo *philo)
-{
-    pthread_mutex_lock(philo->right_fork);
-    messages(TAKE_FORKS, philo);
-    pthread_mutex_lock(philo->left_fork);
-    messages(TAKE_FORKS, philo);    
-}
-
-static void	drop_forks(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->right_fork);
-	pthread_mutex_unlock(philo->left_fork);
-	messages(SLEEPING, philo);
-	usleep(philo->table->time_to_sleep);
-}
-
 void    eat(t_philo *philo)
 {
-    take_forks(philo);
-	pthread_mutex_lock(&philo->lock);
+	t_table	*table;
+	
+	table = philo->table;
+	pthread_mutex_lock(&table->forks[philo->left_fork]);
+	pthread_mutex_lock(&table->forks[philo->right_fork]);
 	philo->eating = 1;
 	philo->time_to_die = get_time() + philo->table->time_to_die;
 	messages(EATING, philo);
 	philo->times_ate++;
 	usleep(philo->table->time_to_eat);
 	philo->eating = 0;
-	pthread_mutex_unlock(&philo->lock);
-	drop_forks(philo);
+	pthread_mutex_unlock(&table->forks[philo->left_fork]);
+	pthread_mutex_unlock(&table->forks[philo->right_fork]);
 }

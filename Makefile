@@ -6,12 +6,12 @@
 #    By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/26 20:23:17 by marcela           #+#    #+#              #
-#    Updated: 2023/03/03 21:46:01 by mrichard         ###   ########.fr        #
+#    Updated: 2023/03/04 15:11:14 by mrichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I./includes
+CFLAGS = -Wall -Wextra -Werror -I./includes -fsanitize=thread
 RM = rm -rf
 NAME = philo
 

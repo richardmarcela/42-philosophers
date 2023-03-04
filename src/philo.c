@@ -6,7 +6,7 @@
 /*   By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:23:06 by marcela           #+#    #+#             */
-/*   Updated: 2023/03/03 20:56:13 by mrichard         ###   ########.fr       */
+/*   Updated: 2023/03/04 15:13:45 by mrichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,4 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_exit(&table);
 	return (0);
-	printf("\nNUMBER OF PHILOS: %d\n", table.number_of_philos);
-	printf("TIME TO DIE: %d\n", table.time_to_die);
-	printf("TIME TO EAT: %d\n", table.time_to_eat);
-	printf("TIME TO SLEEP: %d\n", table.time_to_sleep);
-	printf("TIMES TO EAT: %d\n", table.must_eat);
 }
