@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+         #
+#    By: mrichard <mrichard@student.42porto.pt>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/26 20:23:17 by marcela           #+#    #+#              #
-#    Updated: 2023/03/04 15:11:14 by mrichard         ###   ########.fr        #
+#    Updated: 2023/03/07 19:41:37 by mrichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I./includes -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -I./includes #-fsanitize=thread
 RM = rm -rf
 NAME = philo
 
@@ -34,7 +34,7 @@ fclean: clean
 re: fclean all
 
 run: re
-	./philo 5 800 200 200 2
+	./philo 3 310 200 100 1
 
 .PHONY: all clean fclean re run
 

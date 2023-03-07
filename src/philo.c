@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrichard <mrichard@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:23:06 by marcela           #+#    #+#             */
-/*   Updated: 2023/03/04 15:13:45 by mrichard         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:35:01 by mrichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,21 @@ static int	error_in_args(int argc, char **argv)
 
 uint64_t	get_time(void)
 {
-	struct timeval	tv; //estrutura que armazena o tempo atual em segundos e microssegundos
+	struct timeval	tv; //struct that stores the current time in seconds and microseconds
 
-	if (gettimeofday(&tv, NULL)) //tempo atual do programa em microssegundos
+	if (gettimeofday(&tv, NULL)) //current program time in microseconds
 		return (exit_error(NULL));
-	//multiplica o numero de segundos por 1000 para converte-los em milissegundos
-	//divide os milissegundos por 100 pra transformar em microssegundos
-	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000));
+	///multiply the number of seconds by 1000 to convert them to milliseconds
+	//divide milliseconds by 100 to convert to microseconds
+	return ((tv.tv_sec * (int)1000) + (tv.tv_usec / 1000));
 }
 
 int	case_one(t_table *table)
 {
 	table->starting_time = get_time();
-	if (pthread_create(&table->tid[0], NULL, &routine, &table->philos[0]))
+	if (pthread_create(&table->tid[0], NULL, &routine, &table->philos[0])) //creates just one thread
 		return (exit_error(table));
-	pthread_detach(table->tid[0]);
+	pthread_detach(table->tid[0]); //it no longer needs to be explicitly joined with another thread in order to release its resources.
 	while (table->dead == 0)
 		usleep(0);
 	ft_exit(table);

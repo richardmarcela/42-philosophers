@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrichard <mrichard@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 19:31:10 by mrichard          #+#    #+#             */
-/*   Updated: 2023/03/04 15:35:55 by mrichard         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:32:29 by mrichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,14 @@ static int	init_forks(t_table *table)
 
 	i = -1;
 	while (++i < table->number_of_philos)
+		pthread_mutex_init(&table->forks[i], NULL);
+	table->philos[0].left_fork = &table->forks[0];
+	table->philos[0].right_fork = &table->forks[table->number_of_philos - 1];
+	i = 0;
+	while (++i < table->number_of_philos)
 	{
-		if (i != table->number_of_philos - 1 && table->number_of_philos > 1)
-		{
-			table->philos[i].left_fork = i;
-			table->philos[i].right_fork = (i + 1) % table->number_of_philos;
-		}
-		else
-		{
-			table->philos[i].left_fork = (i + 1) % table->number_of_philos;
-			table->philos[i].right_fork = i;
-		}
+		table->philos[i].left_fork = &table->forks[i];
+		table->philos[i].right_fork = &table->forks[i - 1];
 	}
 	return (0);
 }
@@ -65,10 +62,10 @@ static void	init_philos(t_table *table)
 
 static int	init_table(t_table *table, char **argv, int argc)
 {
-	table->number_of_philos = ft_atoi(argv[1]);
-	table->time_to_die = ft_atoi(argv[2]);
-	table->time_to_eat = ft_atoi(argv[3]);
-	table->time_to_sleep = ft_atoi(argv[4]);
+	table->number_of_philos = (int)ft_atoi(argv[1]);
+	table->time_to_die = (int)ft_atoi(argv[2]);
+	table->time_to_eat = (int)ft_atoi(argv[3]);
+	table->time_to_sleep = (int)ft_atoi(argv[4]);
 	if (argc == 6)
 		table->must_eat = ft_atoi(argv[5]);
 	else
